@@ -1,7 +1,7 @@
-=== Plugin Name ===
+=== OTP by Email for Contact Form 7 ===
 Contributors: aurovrata
 Donate link: https://www.paypal.com/donate?hosted_button_id=V6CMZPJSW7KXS
-Tags: OTP, email validatoin link, contact form 7 extension, OTP by email
+Tags: OTP, email validation link, contact form 7 extension, OTP by email
 Requires at least: 3.0.1
 Tested up to: 5.5.3
 Stable tag: trunk

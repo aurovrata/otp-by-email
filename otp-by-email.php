@@ -13,7 +13,7 @@
  * @package           Otp_By_Email
  *
  * @wordpress-plugin
- * Plugin Name:       OTP by email for CF7
+ * Plugin Name:       OTP by Email for Contact Form 7
  * Plugin URI:        https://github.com/aurovrata/otp-by-email
  * GitHub Plugin URI: https://github.com/aurovrata/otp-by-email
  * Description:       Enable OTP validation of an email field using the CF7 notification email.
