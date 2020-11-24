@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-11-17 21:10+0530\n"
+"PO-Revision-Date: 2020-11-17 21:10+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: public\n"
+"X-Poedit-SearchPath-1: admin\n"
+"X-Poedit-SearchPath-2: includes\n"
+
+#: includes/class-otp-by-email-activator.php:34
+msgid "This plugin requires the Contact Form 7 plugin to be installed"
+msgstr ""
+
+#: public/class-otp-by-email-public.php:159
+msgid "Unable to validate your email!"
+msgstr ""
+
+#: public/class-otp-by-email-public.php:163
+msgid "Thank you for validating your email!"
+msgstr ""
