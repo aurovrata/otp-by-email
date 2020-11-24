@@ -142,10 +142,13 @@ class Otp_By_Email_Public {
   }
 	/**
 	* function to create a token-indepent, user-independent, single tick nonce.
+  * @param String $email a valid email to encode intoa unique nonce.
+  * @param String $form_id the id of the form on which this email was submitted. (Defaults to 0).
+  * @return String a unique time-limited nonce toidentify the email.
 	*/
-	static public function otp_nonce($email){
+	static public function otp_nonce($email, $form_id=0){
 		//allow user to set lifetime.
-		$life = apply_filters('otp_by_email_lifetime',3 * DAY_IN_SECONDS, $email);
+		$life = apply_filters('otp_by_email_lifetime',3 * DAY_IN_SECONDS, $email, $form_id);
  		$life = ceil( time() / ( $life * 1.0 ) );
     return substr( wp_hash( $life . '|' . $email , 'nonce' ), -12, 10 );
 	}
@@ -154,7 +157,7 @@ class Otp_By_Email_Public {
 	* hooked  on 'parse_request'
 	*@since 1.0.0
 	*@param WP $wp text_description
-	*@return string text_description
+	*@return String text_description
 	*/
 	public function validate_otp($wp){
 		if (array_key_exists('otp-by-email', $wp->query_vars) and !empty($wp->query_vars['otp-by-email']) ){
@@ -197,10 +200,10 @@ class Otp_By_Email_Public {
 	* Redirec to page on success.
 	* Hooked on 'otp_by_email_validated'
 	*@since 1.0.0
-	*@param string $url filter url to redirect to.
-	*@param string $email email validated.
-	*@param string $form_id form to which email was submitted.
-	*@return string url to redirect to.
+	*@param String $url filter url to redirect to.
+	*@param String $email email validated.
+	*@param String $form_id form to which email was submitted.
+	*@return String url to redirect to.
 	*/
 	public function redirect_validated($url, $email, $form_id){
 		if($form_id>0){
@@ -213,10 +216,10 @@ class Otp_By_Email_Public {
 	* Redirec to page on success.
 	* Hooked on 'otp_by_email_failed'
 	*@since 1.0.0
-	*@param string $url filter url to redirect to.
-	*@param string $email email validated.
-	*@param string $form_id form to which email was submitted.
-	*@return string url to redirect to.
+	*@param String $url filter url to redirect to.
+	*@param String $email email validated.
+	*@param String $form_id form to which email was submitted.
+	*@return String url to redirect to.
 	*/
 	public function redirect_failed($url, $email, $form_id){
 		if($form_id>0){
@@ -228,13 +231,14 @@ class Otp_By_Email_Public {
 }
 /**
 * Funiton to get a link for email validation.
-* @param string $email a valid email.
-* @return string a unique link to validate the email, reurns false if the $email is invalid.
+* @param String $email a valid email.
+* @param String $form_id the id of the form on which this email was submitted. (Defaults to 0).
+* @return String a unique link to validate the email, reurns false if the $email is invalid.
 * @since 1.0
 */
-function get_otp_by_email_link($email){
+function get_otp_by_email_link($email, $form_id=0){
 	$email = sanitize_email($email);
 	if($email){
-  	return Otp_By_Email_Public::otp_link($email);
+  	return Otp_By_Email_Public::otp_link($email, $form_id);
 	}else return false;
 }
