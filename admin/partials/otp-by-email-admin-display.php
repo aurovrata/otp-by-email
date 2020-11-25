@@ -12,7 +12,6 @@
 
  $success = get_post_meta($contact_form->id(), '_otp_on_success',true);
  $failure = get_post_meta($contact_form->id(), '_otp_on_failure',true);
- debug_msg("s:$success, f:$failure");
   ?>
 
  <h3><?= __('Select redirect pages','otp-by-email')?></h3>

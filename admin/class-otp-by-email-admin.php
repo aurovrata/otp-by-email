@@ -155,8 +155,8 @@ class Otp_By_Email_Admin {
 	*/
 	public function save_pages($form){
 		if(isset($_POST['_otp_on_success'])){
-			update_post_meta($form->id(),'_otp_on_success',$_POST['_otp_on_success']);
-			update_post_meta($form->id(),'_otp_on_failure',$_POST['_otp_on_failure']);
+			update_post_meta($form->id(),'_otp_on_success', sanitize_option('page_on_front', $_POST['_otp_on_success']));
+			update_post_meta($form->id(),'_otp_on_failure', sanitize_option('page_on_front', $_POST['_otp_on_failure']));
 		}
 	}
 }
