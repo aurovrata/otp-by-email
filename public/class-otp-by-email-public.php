@@ -111,7 +111,7 @@ class Otp_By_Email_Public {
     if( !isset($_POST['_wpcf7'])){
       return $posted_data;
     }
-    $form_id = $_POST['_wpcf7'];
+    $form_id = absint($_POST['_wpcf7']);
     $contact_form = WPCF7_ContactForm::get_instance($form_id);
     $tags = $contact_form->scan_form_tags();
 
