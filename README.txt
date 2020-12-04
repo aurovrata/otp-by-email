@@ -80,3 +80,5 @@ $link = get_otp_by_email_link($email, $form_id=0);
 
 
 == Changelog ==
+= 1.0.1 =
+* fix display of tab in admin page.

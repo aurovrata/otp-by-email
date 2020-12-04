@@ -17,7 +17,7 @@
  <h3><?= __('Select redirect pages','otp-by-email')?></h3>
  <ul id="otp-by-email-settings">
    <li style="display: inline-block">
-     <label for="_otp_on_success"></label><?= __('On success','otp-by-email')?>:</label>
+     <label for="_otp_on_success"><?= __('On success','otp-by-email')?>:</label>
      <?php wp_dropdown_pages(array(
        'name'=>'_otp_on_success',
        'selected'=>$success,
@@ -25,7 +25,7 @@
      ));?>
    </li>
    <li style="display: inline-block">
-     <label for="_otp_on_failure"></label><?= __('On failure','otp-by-email')?>:</label>
+     <label for="_otp_on_failure"><?= __('On failure','otp-by-email')?>:</label>
      <?php wp_dropdown_pages(array(
        'name'=>'_otp_on_failure',
        'selected'=>$failure,

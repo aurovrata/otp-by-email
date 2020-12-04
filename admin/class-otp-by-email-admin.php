@@ -126,6 +126,7 @@ class Otp_By_Email_Admin {
   public function otp_tab($panels){
 		$contact_form = WPCF7_ContactForm::get_current();
 		$tags = $contact_form->scan_form_tags();
+    $display = false;
   	foreach ( (array) $tags as $tag ) {
   	  if ( !empty($tag['name']) && 'email' == $tag['basetype'] ) $display=true;
 		}
