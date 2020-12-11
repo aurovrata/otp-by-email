@@ -9,7 +9,7 @@
  * that starts the plugin.
  *
  * @link              https://profiles.wordpress.org/aurovrata/
- * @since             1.0.1
+ * @since             1.1.0
  * @package           Otp_By_Email
  *
  * @wordpress-plugin
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'OTP_BY_EMAIL_VERSION', '1.0.1' );
+define( 'OTP_BY_EMAIL_VERSION', '1.1.0' );
 
 /**
  * The code that runs during plugin activation.

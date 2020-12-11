@@ -154,8 +154,6 @@ class Otp_By_Email {
 
 		$plugin_admin = new Otp_By_Email_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		// $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
     $this->loader->add_filter( 'wpcf7_collect_mail_tags', $plugin_admin, 'otp_mail_tag');
     $this->loader->add_filter( 'wpcf7_editor_panels', $plugin_admin, 'otp_tab');
 		$this->loader->add_action('wpcf7_save_contact_form',$plugin_admin, 'save_pages');
@@ -172,8 +170,6 @@ class Otp_By_Email {
 
 		$plugin_public = new Otp_By_Email_Public( $this->get_plugin_name(), $this->get_version() );
 
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		// $this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
     $this->loader->add_filter( 'wpcf7_posted_data', $plugin_public, 'setup_otp_link',5,1 );
     $this->loader->add_filter( 'query_vars', $plugin_public, 'register_custom_link');
     $this->loader->add_action( 'parse_request', $plugin_public, 'validate_otp' );

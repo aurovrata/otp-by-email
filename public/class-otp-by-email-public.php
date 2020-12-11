@@ -53,52 +53,6 @@ class Otp_By_Email_Public {
 		$this->version = $version;
 
 	}
-
-	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Otp_By_Email_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Otp_By_Email_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/otp-by-email-public.css', array(), $this->version, 'all' );
-
-	}
-
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Otp_By_Email_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Otp_By_Email_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/otp-by-email-public.js', array( 'jquery' ), $this->version, false );
-
-	}
   /**
    *Setup location data
    * hooked on cf7 filter 'wpcf7_posted_data'
@@ -123,6 +77,8 @@ class Otp_By_Email_Public {
       if(!empty($_POST[$field])){
         $email = sanitize_text_field($_POST[$field]);
         $posted_data['otp-'.$field] = self::otp_link($email, $form_id);
+        /** @since 1.1.0 notify link creation */
+        do_action("otp_by_email_unique_link_created-{$field}", $email, $form_id);
       }
     }
     return $posted_data;
@@ -173,7 +129,7 @@ class Otp_By_Email_Public {
 			$msg = __('Unable to validate your email!','otp-by-email');
 			$email = $validations[$nonce];
       if( hash_equals( self::otp_nonce($email['email']), $nonce ) ){
-				$url = apply_filters('otp_by_email_validated','',$email['email'], $email['form']);
+				$url = apply_filters('otp_by_email_validated','',$email['email'], $email['form'], $nonce);
 				$msg = __('Thank you for validating your email!','otp-by-email');
 			}else{
 				$url = apply_filters('otp_by_email_failed','',$email['email'], $email['form']);
@@ -197,7 +153,7 @@ class Otp_By_Email_Public {
 		return $vars;
 	}
 	/**
-	* Redirec to page on success.
+	* Redirect to page on success.
 	* Hooked on 'otp_by_email_validated'
 	*@since 1.0.0
 	*@param String $url filter url to redirect to.

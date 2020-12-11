@@ -3,7 +3,7 @@ Contributors: aurovrata
 Donate link: https://www.paypal.com/donate?hosted_button_id=V6CMZPJSW7KXS
 Tags: OTP, email validation link, contact form 7 extension, OTP by email
 Requires at least: 3.0.1
-Tested up to: 5.5.3
+Tested up to: 5.6.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -80,5 +80,8 @@ $link = get_otp_by_email_link($email, $form_id=0);
 
 
 == Changelog ==
+= 1.1.0 =
+* added action hook otp_by_email_unique_link_created-$field
+* added nonce field in otp_by_email_validated filter hook attributes.
 = 1.0.1 =
 * fix display of tab in admin page.
