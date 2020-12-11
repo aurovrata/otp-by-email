@@ -76,9 +76,7 @@ class Otp_By_Email_Public {
       $field = $tag['name'];
       if(!empty($_POST[$field])){
         $email = sanitize_text_field($_POST[$field]);
-        $posted_data['otp-'.$field] = self::otp_link($email, $form_id);
-        /** @since 1.1.0 notify link creation */
-        do_action("otp_by_email_unique_link_created-{$field}", $email, $form_id);
+        $posted_data['otp-'.$field] = self::otp_link($email, $form_id, $field);
       }
     }
     return $posted_data;
@@ -87,13 +85,20 @@ class Otp_By_Email_Public {
 	* get a link for given email.
   * @since 1.0.0
   */
-  static public function otp_link($email, $id = 0){
+  static public function otp_link($email, $id = 0, $field=null){
 		$nonce = self::otp_nonce( $email);
 		// debug_msg("$nonce -> $email");
 		$link = home_url("index.php?otp-by-email={$nonce}");
 		$validations = get_option('otp-by-email',array());
 		$validations[$nonce]= array('email'=>$email, 'form'=>$id);
     update_option('otp-by-email',$validations);
+    /** @since 1.1.0 notify link creation
+    * @param String $email email address processed.
+    * @param String $nonce unique nonce field for email.
+    * @param String $field form email field processed, null is link created manually.
+    * @param int $form_id id of cf7 form, 0 if otp link created manually.
+    */
+    do_action('otp_by_email_unique_link_created', $email, $nonce, $field, $form_id);
 		return $link;
   }
 	/**
