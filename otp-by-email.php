@@ -9,7 +9,7 @@
  * that starts the plugin.
  *
  * @link              https://profiles.wordpress.org/aurovrata/
- * @since             1.1.0
+ * @since             1.0.0
  * @package           Otp_By_Email
  *
  * @wordpress-plugin
@@ -17,7 +17,7 @@
  * Plugin URI:        https://github.com/aurovrata/otp-by-email
  * GitHub Plugin URI: https://github.com/aurovrata/otp-by-email
  * Description:       Enable OTP validation of an email field using the CF7 notification email.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            aurovrata
  * Author URI:        https://profiles.wordpress.org/aurovrata/
  * License:           GPL-2.0+
