@@ -98,7 +98,7 @@ class Otp_By_Email_Public {
     * @param String $field form email field processed, null is link created manually.
     * @param int $form_id id of cf7 form, 0 if otp link created manually.
     */
-    do_action('otp_by_email_unique_link_created', $email, $nonce, $field, $form_id);
+    do_action('otp_by_email_unique_link_created', $email, $nonce, $field, $id);
 		return $link;
   }
 	/**

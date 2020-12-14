@@ -80,6 +80,8 @@ $link = get_otp_by_email_link($email, $form_id=0);
 
 
 == Changelog ==
+= 1.1.2 =
+* fix form ID field bug.
 = 1.1.1 =
 * changed location of action hook otp_by_email_unique_link_created and added nonce field as attribute.
 = 1.1.0 =
