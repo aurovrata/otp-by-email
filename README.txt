@@ -2,8 +2,9 @@
 Contributors: aurovrata
 Donate link: https://www.paypal.com/donate?hosted_button_id=V6CMZPJSW7KXS
 Tags: OTP, email validation, contact form 7 extension, OTP by email, email verification
-Requires at least: 3.0.1
-Tested up to: 5.6.0
+Requires at least: 4.4
+Requires PHP: 5.6
+Tested up to: 6.1.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -19,8 +20,9 @@ Use this CF7 extension to enable OTP links to be inserted into confirmation/noti
 
 1. Install Contact Form 7 plugin
 2. Install OTP by Email plugin extension
-3. In CF7 forms with email fields, a mail tag `[otp-<field-name>]` will be available to insert into your notification/confirmation email which will all a unique time-limited URL for users to confirm their email.
-4. In the form editor page, the OTP tab allows you to set the pages to redirect to when an email is validated or fails due to an outdated link.
+3. OTP tag requires an email field in your CF7 forms.
+4. In CF7 forms with email fields, a mail tag `[otp-<field-name>]` will be available to insert into your notification/confirmation email which will all a unique time-limited URL for users to confirm their email.
+5. In the form editor page, the OTP tab allows you to set the pages to redirect to when an email is validated or fails due to an outdated link.
 
 == Frequently Asked Questions ==
 
