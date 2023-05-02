@@ -9,11 +9,15 @@
  * @package    Otp_By_Email
  * @subpackage Otp_By_Email/admin/partials
  */
-
- $success = get_post_meta($contact_form->id(), '_otp_on_success',true);
- $failure = get_post_meta($contact_form->id(), '_otp_on_failure',true);
-  ?>
-
+$tags = $contact_form->scan_form_tags();
+$display = false;
+foreach ( (array) $tags as $tag ) {
+	if ( !empty($tag['name']) && 'email' == $tag['basetype'] ) $display=true;
+}
+if( $display ):
+	$success = get_post_meta($contact_form->id(), '_otp_on_success',true);
+	$failure = get_post_meta($contact_form->id(), '_otp_on_failure',true);
+?>
  <h3><?= __('Select redirect pages','otp-by-email')?></h3>
  <ul id="otp-by-email-settings">
    <li style="display: inline-block">
@@ -35,3 +39,7 @@
      ));?>
    </li>
  </ul>
+ <?php else:?>
+	<p><?php _e('You currently have no email field in your form.  You need to create an email field, and save your form for the OTP settings and mail tag to function.','opt-by-email')?></p>
+<?php endif;?>
+<p><?php _e('To understand how to use OTP by Email, please read the <a href="https://wordpress.org/plugins/otp-by-email/#faq">FAQ</a> on the plugin page.','otp-by-email');?></p>

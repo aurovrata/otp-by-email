@@ -73,7 +73,7 @@ class Otp_By_Email_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/otp-by-email-admin.css', array(), $this->version, 'all' );
+		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/otp-by-email-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class Otp_By_Email_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/otp-by-email-admin.js', array( 'jquery' ), $this->version, false );
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/otp-by-email-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
   /**
@@ -124,18 +124,17 @@ class Otp_By_Email_Admin {
   * @param Array $panel array of panels presented as tabs in the editor, $id => array( 'title' => $panel_title, 'callback' => $callback_function).  The $callback_function must be a valid function to echo the panel html script.
   */
   public function otp_tab($panels){
-		$contact_form = WPCF7_ContactForm::get_current();
-		$tags = $contact_form->scan_form_tags();
-    $display = false;
-  	foreach ( (array) $tags as $tag ) {
-  	  if ( !empty($tag['name']) && 'email' == $tag['basetype'] ) $display=true;
-		}
-		if($display){
-	    $panels['otp-by-email']=array(
-	      'title'=>__('OTP', 'otp-by-email'),
-	      'callback'=>array($this, 'display_tab_settings')
-	    );
-		}
+		// $contact_form = WPCF7_ContactForm::get_current();
+		// $tags = $contact_form->scan_form_tags();
+    // $display = false;
+  	// foreach ( (array) $tags as $tag ) {
+  	//   if ( !empty($tag['name']) && 'email' == $tag['basetype'] ) $display=true;
+		// }
+		// let's display the tab regardless, move the logic into the tab display itself.
+		$panels['otp-by-email']=array(
+			'title'=>__('OTP', 'otp-by-email'),
+			'callback'=>array($this, 'display_tab_settings')
+		);
     return $panels;
   }
 	/**

@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/donate?hosted_button_id=V6CMZPJSW7KXS
 Tags: OTP, email validation, contact form 7 extension, OTP by email, email verification
 Requires at least: 4.4
 Requires PHP: 5.6
-Tested up to: 6.1.0
-Stable tag: trunk
+Tested up to: 6.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,17 @@ Use this CF7 extension to enable OTP links to be inserted into confirmation/noti
 5. In the form editor page, the OTP tab allows you to set the pages to redirect to when an email is validated or fails due to an outdated link.
 
 == Frequently Asked Questions ==
+
+= 0. What does this plugin do ? =
+
+If you are collecting an email address in your CF7 form from a visitor, you can use this plugin to validate that email.
+
+The email field name will be used to create a unique OTP mail tag shortcode to insert into your notification mail (sent to that email).  The shortcode will be replaced by a unique URL which the recipient can click on to validate their email.  This unique link is created using WordPress nonce API, and it stored in the DB as a transient with a default validity of 72 hours (3 days).  You can customise this validity period, please refer to the FAQ below for more details.  When a recipient clicks on a valid link, they are redirected to the <em>On Success</em> page you configured in the OTP tab.  If the link is no longer valid, they are taken to the <em>On failure</em> page instead, where you may give them the option to send them a new OTP link.
+
+You can use this plugin to go beyond simple email validation, as each valid user now has a unique way to identify themselves on your server.  I have used this plugin to create a conference registration and submission form for speakers without having them to actually create a user account on the server.  A visitor registers as a speaker, and once their email is validated, they use their OTP link (which expires a week prior to the conference start date) in order to submit talks for the conference without having to have an account.  
+
+If you need to explore such functionality, you can contact me on "vrata at syllogic dot in".
+
 
 = 1. Is it possible to change the time-limit for the link validity ? =
 
@@ -82,6 +93,8 @@ $link = get_otp_by_email_link($email, $form_id=0);
 
 
 == Changelog ==
+= 1.2.0 =
+* clarify the OTP tab settings and mail tag functionality.
 = 1.1.2 =
 * fix form ID field bug.
 = 1.1.1 =
